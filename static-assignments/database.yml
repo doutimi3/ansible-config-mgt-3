@@ -1,4 +1,4 @@
 ---
-- hosts: dbgroup
+- hosts: db
   roles:
     - mysql
