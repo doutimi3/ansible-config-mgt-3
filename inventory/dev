@@ -4,5 +4,8 @@
 [db]
 172.31.46.185 ansible_user=ubuntu
 
+[todo]
+172.31.45.129 ansible_user=ec2-user
+
 
 
