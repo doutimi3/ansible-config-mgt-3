@@ -52,7 +52,7 @@
         url: http://35.178.92.22:8082/artifactory/ToDOCICD/php-todo
         dest: /home/ec2-user/
         url_username: admin
-        url_password: APBKm4qXoDaoE4pTfHAD6iPnJMh
+        url_password: cmVmdGtuOjAxOjE3MTY1NTcxNjA6cEQybXpDS2tvclNTanp0cGlmNHFCUHBTTmw2
 
     - name: unzip the artifacts
       ansible.builtin.unarchive:
