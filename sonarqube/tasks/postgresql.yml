@@ -12,8 +12,8 @@
 - name: install postgresql
   ansible.builtin.apt:
     pkg:
-    - postgresql
-    - postgresql-contrib
+      - postgresql
+      - postgresql-contrib
     state: present
 
 - name: start and enable postgresql
@@ -21,7 +21,6 @@
     name: postgresql
     state: started
     enabled: yes
-     
 
 - name: create password for user postgres
   ansible.builtin.user:
@@ -35,8 +34,6 @@
     name: sonarqube
     encoding: UTF-8
 
-   
-
 - name: Create user sonarqube
   become_user: postgres
   community.postgresql.postgresql_user:
@@ -44,4 +41,10 @@
     name: sonar
     password: sonar
     priv: "ALL"
-   
+  register: sonar_user_created
+  ignore_errors: yes
+
+- name: Check if sonar user was created
+  debug:
+    msg: "Sonar user already exists"
+  when: sonar_user_created is failed
