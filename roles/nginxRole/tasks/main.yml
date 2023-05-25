@@ -1,24 +1,22 @@
 ---
-- name: Install nginx
-  apt:
-    name: nginx
+# tasks file for nginx
+- name: install nginx on the webserver
+  ansible.builtin.yum:
+      name: nginx
+      state: present
+
+
+- name: ensure nginx is started and enabled
+  ansible.builtin.service:
+     name: nginx
+     state: started 
+     enabled: yes
+
+- name: install PHP
+  ansible.builtin.yum:
+    name:
+      - php 
+      - php-mysqlnd
+      - php-gd 
+      - php-curl
     state: present
-
-- name: start nginx
-  service:
-    name: nginx
-    state: started
-
-- name: Insert configuration file in server block
-  blockinfile:
-    path: /etc/nginx/nginx.conf
-    block: "{{ lookup('file', '../templates/nginx.conf' ) }}"
-    insertafter: "http {"
-
-- name: Comment out site-enabled
-  replace:
-    path: /etc/nginx/nginx.conf
-    regexp: '^\s*include\s+/etc/nginx/sites-enabled/.*$'
-    replace: '#\g<0>'
-
-  notify: Restart nginx service
