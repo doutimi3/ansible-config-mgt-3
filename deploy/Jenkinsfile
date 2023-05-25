@@ -7,6 +7,7 @@ pipeline {
 
   parameters {
       string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
+      string(name: 'gitBranch', defaultValue: 'feature/jenkinspipeline-stages', description: 'SCM Git branch to checkout')
     }
 
   stages{
@@ -20,7 +21,7 @@ pipeline {
 
       stage('Checkout SCM') {
          steps{
-            git branch: 'feature/jenkinspipeline-stages', url: 'https://github.com/doutimi3/ansible-config-mgt-3.git'
+            git branch: "{gitBranch}", url: 'https://github.com/doutimi3/ansible-config-mgt-3.git'
          }
        }
 
