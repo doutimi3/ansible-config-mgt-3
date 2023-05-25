@@ -1,16 +1,16 @@
-jenkins-server ansible_host=172.31.46.143
-nginx-server ansible_host=172.31.36.253
-sonarqube-server ansible_host=172.31.35.213
-artifactory-server ansible_host=172.31.40.138
+jenkins-server ansible_host=18.170.124.110
+nginx-server ansible_host=172.31.46.59
+# sonarqube-server ansible_host=172.31.35.213
+artifactory-server ansible_host=172.31.46.68
 
 [jenkins]
-jenkins-server
+jenkins-server ansible_user=ec2-user
 
 [nginx]
-nginx-server
+nginx-server ansible_user=ec2-user
 
-[sonarqube]
-sonarqube-server
+# [sonarqube]
+# sonarqube-server
 
-[artifact_repository]
-artifactory-server
+[artifactory]
+artifactory-server ansible_user=ec2-user
