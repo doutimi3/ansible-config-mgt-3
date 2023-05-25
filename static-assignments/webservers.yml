@@ -1,4 +1,0 @@
----
-- hosts: uat_webgroup
-  roles:
-    - webserver
